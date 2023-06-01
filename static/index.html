@@ -85,6 +85,7 @@
         document.getElementById('isResetButtonMasterOnly'),
         document.getElementById('isSoundButtonMasterOnly'),
         document.getElementById('isSimpleBackground'),
+        document.getElementById('isFullScreen'),
     ].forEach((element) => {
         element.addEventListener('click', (event) => {
             const current = event.currentTarget;
@@ -125,6 +126,10 @@
                         <input type="checkbox" id="isSimpleBackground">
                         <label for="isSimpleBackground">無地背景を使用する</label>
                     </div>
+                    <div class="options__option">
+                        <input type="checkbox" id="isFullScreen">
+                        <label for="isFullScreen">部屋作成者以外をフルスクリーンに</label>
+                    </div>
                 </div>
             </div>
             <p class="content__separate">もしくは</p>
@@ -156,6 +161,14 @@
             <div class="changelog">
                 <h4 class="changelog__head">更新履歴</h4>
                 <div class="changelog__list">
+                    <div class="changelog__content">
+                        <div class="changelog__date">
+                            2023-06-02(とんこう文化祭向け)
+                        </div>
+                        <div class="changelog__description">
+                            <p>参加者全画面モードを追加</p>
+                        </div>
+                    </div>
                     <div class="changelog__content">
                         <div class="changelog__date">
                             2022-05-03
@@ -208,13 +221,6 @@
                             <p>一つの部屋に対し複数のパスワードを発行することができるようになりました。</p>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="logos">
-                <div class="logos__github">
-                    <a href="https://github.com/kznrluk/hayaoshi-button-online">
-                        <img alt="github logo" src="//github.githubassets.com/images/modules/logos_page/GitHub-Logo.png">
-                    </a>
                 </div>
             </div>
         </div>

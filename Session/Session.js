@@ -8,6 +8,7 @@ module.exports = class Session {
         this.isResetButtonMasterOnly = options.isResetButtonMasterOnly ?? false;
         this.isSoundButtonMasterOnly = options.isSoundButtonMasterOnly ?? false;
         this.isSimpleBackground = options.isSimpleBackground ?? false;
+        this.isFullScreen = options.isFullScreen ?? false;
         this.room = ioRoom;
         this.playSound = true;
         this.room.on('connection', socket => this.connection(socket));
@@ -82,6 +83,7 @@ module.exports = class Session {
             isResetButtonMasterOnly: this.isResetButtonMasterOnly,
             isSoundButtonMasterOnly: this.isSoundButtonMasterOnly,
             isSimpleBackground: this.isSimpleBackground,
+            isFullScreen: this.isFullScreen,
             players: this.hayaoshi.createPlayerDetails()
         });
     }

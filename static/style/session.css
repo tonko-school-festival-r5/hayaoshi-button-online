@@ -215,11 +215,6 @@ body {
     height: 100%;
 }
 
-.btnArea {
-    width: auto;
-    height: 200px;
-}
-
 .btn-circle-3d {
     display: inline-block;
     text-decoration: none;
@@ -235,6 +230,13 @@ body {
     overflow: hidden;
     border-bottom: solid 3px #bd6565;
     transition: .1s;
+}
+
+.btnArea .btn-circle-3d {
+    height: 50vh;
+    width: 50vh;
+    line-height: calc(50vh + 10px);
+    font-size: 19.444vh;
 }
 
 .btn-circle-3d--shadow {

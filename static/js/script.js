@@ -6,6 +6,7 @@ const store = {
     isActiveSoundButton: true,
     isCoolDownSoundButton: false,
     isSimpleBackground: null,
+    isFullScreen: false,
 }
 
 const getSessionId = () => new URLSearchParams(location.href.split('?')[1]).get('sessionId');
@@ -66,7 +67,14 @@ const soundButtons = [
     [document.getElementById('sound_boboo'), '/sound/boboo.wav']
 ];
 
-socket.on('sessionStatus', ({ players, isResetButtonMasterOnly, isSoundButtonMasterOnly, isSimpleBackground }) => {
+function goFullScreen(element=null){
+    const doc = window.document;
+    const docEl = (element === null)?  doc.documentElement:element;
+    let requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+    requestFullScreen.call(docEl);
+}
+
+socket.on('sessionStatus', ({ players, isResetButtonMasterOnly, isSoundButtonMasterOnly, isSimpleBackground, isFullScreen }) => {
     const ownData = players.find(p => p.id === socket.id);
 
     // TODO: 権限周り増える度しんどくなるのでリファクタしたい
@@ -94,6 +102,16 @@ socket.on('sessionStatus', ({ players, isResetButtonMasterOnly, isSoundButtonMas
                 cls.remove(target);
             })
         }
+    }
+
+    store.isFullScreen = isFullScreen || false;
+    if (store.isFullScreen && !store.isActiveResetButton) {
+        document.querySelectorAll("#playGame > *:not(.btnArea)").forEach((el) => {
+            el.style.display = "none";
+        });
+        const btnArea = document.querySelector("#playGame > .btnArea")
+        btnArea.classList.add("fullScreen");
+        goFullScreen();
     }
 
     if (ownData) {

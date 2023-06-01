@@ -37,7 +37,8 @@ app.get('/createNewRoom', (req, res) => {
     const isResetButtonMasterOnly = req.query.isResetButtonMasterOnly === 'true';
     const isSoundButtonMasterOnly = req.query.isSoundButtonMasterOnly === 'true';
     const isSimpleBackground = req.query.isSimpleBackground === 'true';
-    const roomId = rooms.createNewRoom({ isResetButtonMasterOnly, isSoundButtonMasterOnly, isSimpleBackground });
+    const isFullScreen = req.query.isFullScreen === 'true';
+    const roomId = rooms.createNewRoom({ isResetButtonMasterOnly, isSoundButtonMasterOnly, isSimpleBackground, isFullScreen });
     res.redirect(`/session.html?sessionId=${roomId}`);
 });
 
